@@ -33,3 +33,6 @@ build/
 dist/
 *.egg-info/
 
+# Remove pdf files on root folder
+*.pdf
+
