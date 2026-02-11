@@ -1,49 +1,42 @@
-# Phase 2 – Preparation Summary
+## Student Performance Prediction – Project Overview
 
-This folder contains everything prepared for **Phase 2 (Development & Reflection)** of the Data Science Use Case portfolio, addressing the professor’s Phase 1 feedback.
+This project uses supervised machine learning to **predict student academic performance** (pass/fail) from a public student performance dataset.  
+The goal is to identify **at‑risk students early** so that universities can provide timely support and improve retention.
 
----
+### Project Structure
 
-## What Was Added (Feedback Addressed)
+```text
+student-performance-ml/
+├─ data/
+│  └─ StudentsPerformance.csv        # Input dataset
+├─ src/
+│  ├─ __init__.py
+│  ├─ data_preprocessing.py          # Loading, target creation, encoding, scaling, splits
+│  ├─ train_and_evaluate.py          # Train & evaluate all models, save metrics and models
+│  ├─ run_pipeline.py                # Main entry point for the full pipeline
+├─ graph/
+│  └─ *.png                          # Architecture figures
+├─ output/
+│  ├─ evaluation_results.json        # Metrics for all models
+│  └─ models/                        # Saved trained models (.joblib)
+├─ venv/                             # Python virtual environment
+├─ requirements.txt                  # Python dependencies
+├─ README.md                         # This file
+└─ .gitignore
+```
 
-1. **System architecture and workflow**  
-   - Documented in `docs/Phase2_Document_Jariwala_Sakshi_4243407.md` (Section 5).  
-   - Mermaid diagrams in `docs/phase2_workflow_diagram.md` (export to PNG/SVG via [mermaid.live](https://mermaid.live)).
+### Models and Methods
 
-2. **Timeline and task breakdown for Phase 2**  
-   - Detailed 6-week plan in the Phase 2 document (Section 4): environment, preprocessing, baseline + RF, SVM + GB, evaluation, documentation.
+- **Models used:**
+  - Logistic Regression (baseline, interpretable)
+  - Random Forest (non‑linear patterns, feature importance)
+  - Support Vector Machine – SVM with RBF kernel
+  - Gradient Boosting Classifier
+- **Target:** binary label (pass/fail) based on the average of math, reading and writing scores.  
+- **Preprocessing:** one‑hot encoding for categorical features, standard scaling for numerical features, stratified train/validation/test splits.  
+- **Evaluation:** Accuracy, Precision, Recall, F1‑score, ROC‑AUC, confusion matrix, and 5‑fold stratified cross‑validation on F1.
 
-3. **Data privacy and ethical handling of student data**  
-   - Section 7 in the Phase 2 document: purpose limitation, anonymisation, fairness, transparency, human in the loop.
-
-4. **Expanded methodology**  
-   - Four models: Logistic Regression, Random Forest, SVM, Gradient Boosting.  
-   - Full preprocessing pipeline, stratified splits, cross-validation, and metrics (accuracy, precision, recall, F1, ROC-AUC).
-
-5. **Implementation**  
-   - `src/data_preprocessing.py`: load, clean, derive target, encode, scale, stratified split.  
-   - `src/train_and_evaluate.py`: train all four models, evaluate, cross-validate, save models and results.  
-   - `src/run_pipeline.py`: one command to run the full pipeline.
-
----
-
-## Phase 2 Document Structure (Mandatory)
-
-The document in `docs/Phase2_Document_Jariwala_Sakshi_4243407.md` follows the required structure:
-
-- Title and Abstract  
-- Introduction and Background  
-- Objectives  
-- Methodology  
-- Timeline and Milestones  
-- System Design and Architecture  
-- Expected Challenges and Solutions  
-- Conclusion  
-- Appendix: Machine Learning Canvas (one-pager)
-
----
-
-## How to Run and Check That Everything Works
+## Student Performance Prediction – How to Run
 
 ### Step 1: Open a terminal in the project folder
 
@@ -70,8 +63,8 @@ python -m src.run_pipeline
 
 ### Step 3: What you should see
 
-- **Console:** “Loading data…” → “Preprocessing…” → “Training and evaluating…” → a **MODEL COMPARISON** table with Accuracy, Precision, Recall, F1, ROC-AUC and Confusion Matrix for each of the 4 models, then **5-Fold Stratified CV (F1)** summary, and finally “Results and models saved to: …\output”.
-- **No Python errors** (exit code 0). If you see a PowerShell “Get-ChildItem” message at the very end, you can ignore it; it’s a shell quirk, not your code.
+- **Console:** “Loading data…” → “Preprocessing…” → “Training and evaluating…” → a **MODEL COMPARISON** table with Accuracy, Precision, Recall, F1, ROC-AUC and Confusion Matrix for each of the 4 models, then **5-Fold Stratified CV (F1)** summary, and finally “Results and models saved to: …\\output”.
+- **No Python errors** (exit code 0).
 
 ### Step 4: Verify output files
 
@@ -89,23 +82,4 @@ If all four models appear in the console table and these files are present, **ev
 ```powershell
 .\venv\Scripts\python.exe -m src.run_pipeline
 ```
-
 ---
-
-## File Naming for Submission
-
-- **Phase 2 document (PebblePad):**  
-  `Jariwala_Sakshi_4243407_UseCaseAnalysis_P2_S` (export the Markdown/Word document as PDF).
-
-- **Zip folder (Phase 3):**  
-  `Jariwala_Sakshi_4243407` (or as specified), with subfolders e.g. `01-Research-and-Development`, `02-Conception`, `03-Finalization`.
-
----
-
-## Next Steps for You
-
-1. **Copy the Phase 2 document** into Word (or your editor), adjust wording if needed, and **export as PDF** for submission.  
-2. **Export the Mermaid diagrams** from `docs/phase2_workflow_diagram.md` as images and paste them into the PDF (Section 5).  
-3. **Run the pipeline** at least once and, if you wish, add a short “Results” subsection with a table or screenshot from `evaluation_results.json`.  
-4. **Draw or digitise the Machine Learning Canvas** as a one-page figure and add it at the end of the Phase 2 document.  
-5. **Phase 3:** Incorporate tutor feedback, add the 5-slide pitch deck and 2-page abstract, and zip all files as required.
