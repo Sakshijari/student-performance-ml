@@ -36,15 +36,30 @@ student-performance-ml/
 - **Preprocessing:** one‑hot encoding for categorical features, standard scaling for numerical features, stratified train/validation/test splits.  
 - **Evaluation:** Accuracy, Precision, Recall, F1‑score, ROC‑AUC, confusion matrix, and 5‑fold stratified cross‑validation on F1.
 
+## Environment Setup (first time)
+
+Create a virtual environment and install dependencies:
+
+```powershell
+# From the project root of this project
+
+# 1) Create virtual environment (Windows)
+python -m venv venv
+
+# 2) Activate it
+.\venv\Scripts\activate
+
+# 3) Install dependencies
+pip install -r requirements.txt
+```
+
+After this one‑time setup, you can follow the run instructions below.
+
 ## Student Performance Prediction – How to Run
 
 ### Step 1: Open a terminal in the project folder
 
-In VS Code/Cursor: **Terminal → New Terminal**, or open PowerShell/Command Prompt and go to:
-
-```text
-F:\ALL IU Assignments\Project computer science\student-performance-ml
-```
+In VS Code/Cursor: **Terminal → New Terminal**, or open PowerShell/Command Prompt in the project folder:
 
 ### Step 2: Run the full pipeline
 
